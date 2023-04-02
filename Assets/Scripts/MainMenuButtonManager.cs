@@ -6,9 +6,9 @@ using UnityEngine.SceneManagement;
 // Give functionality to all buttons in the main menu
 public class MainMenuButtonManager : MonoBehaviour
 {
-    public void GoToLevelSelect()
+    public void PlayGame()
     {
-        SceneManager.LoadScene("Scenes/LevelSelect");
+        SceneManager.LoadScene("Scenes/Levels/Level1");
     }
 
     public void GoToCredits()
