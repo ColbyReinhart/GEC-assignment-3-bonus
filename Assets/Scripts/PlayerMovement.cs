@@ -5,47 +5,53 @@ using UnityEngine;
 // Scripting for player movement and camera control
 public class PlayerMovement : MonoBehaviour
 {
-    public GameObject mainCamera;
     public float moveSpeed = 3;
-    public float jumpForce = 1;
+    public float jumpSpeed = 7;
     public float lookSensitivity = 1;
 
-    private Rigidbody rb;
+    private const float gravityValue = -9.81f;
+    private float playerYVelocity = 0;
+    private float mouseX = 0;
+    private float mouseY = 0;
+
+    private CharacterController controller;
 
     private void Start()
     {
-        rb = GetComponent<Rigidbody>();
+        controller = GetComponent<CharacterController>();
         Cursor.lockState = CursorLockMode.Locked;
     }
 
     private void Update()
     {
         // Let the player look around when they move the mouse
-        float mouseX = Input.GetAxis("Mouse X") * lookSensitivity;
-        float mouseY = Input.GetAxis("Mouse Y") * lookSensitivity;
-        mainCamera.transform.Rotate(-mouseY, 0, 0, Space.Self);
-        transform.Rotate(0, mouseX, 0, Space.World);
-    }
+        mouseX += Input.GetAxis("Mouse X") * lookSensitivity;
+        mouseY += Input.GetAxis("Mouse Y") * lookSensitivity;
 
-    private void FixedUpdate()
-    {
-        // Handle walking
-        if (Input.GetKey(KeyCode.UpArrow))
-        {
-            //Move the Rigidbody forwards constantly at speed you define (the blue arrow axis in Scene view)
-            rb.velocity = transform.forward * moveSpeed;
-        }
+        // Clamp x rotation to prevent the user from turning the camera upside down
+        mouseY = Mathf.Clamp(mouseY, -90f, 90f);
 
-        if (Input.GetKey(KeyCode.DownArrow))
-        {
-            //Move the Rigidbody backwards constantly at the speed you define (the blue arrow axis in Scene view)
-            rb.velocity = -transform.forward * moveSpeed;
-        }
+        // Do the rotations. Y rotations will be applied to the parent gameobject also
+        // so that looking left and right also steers the player
+        Camera.main.transform.rotation = Quaternion.Euler(-mouseY, mouseX, 0);
+        transform.rotation = Quaternion.Euler(0, mouseX, 0);
 
-        // Handle jumping
-        if (Input.GetButtonDown("Jump"))
+        // Calculate movement
+        Vector3 forwardMovement = transform.forward * Input.GetAxis("Vertical") * moveSpeed * Time.deltaTime;
+        Vector3 sideMovement = transform.right * Input.GetAxis("Horizontal") * moveSpeed * Time.deltaTime;
+
+        // Handle jumping and gravity
+        if (Input.GetButtonDown("Jump") && controller.isGrounded)
         {
-            rb.AddForce(new Vector3(0, jumpForce, 0));
+            playerYVelocity = jumpSpeed;
         }
+        else if (!controller.isGrounded)
+        {
+            playerYVelocity += gravityValue * Time.deltaTime;
+        }
+        Vector3 vertMovement = Vector3.up * playerYVelocity * Time.deltaTime;
+
+        // Apply all movement
+        controller.Move(forwardMovement + sideMovement + vertMovement);
     }
 }
