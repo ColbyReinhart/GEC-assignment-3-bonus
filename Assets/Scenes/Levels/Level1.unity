@@ -187,7 +187,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea63f04995b9db745b9abf48fbaf7d73, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mainCamera: {fileID: 929683167}
   moveSpeed: 3
   jumpSpeed: 7
   lookSensitivity: 3
@@ -334,7 +333,6 @@ GameObject:
   - component: {fileID: 929683170}
   - component: {fileID: 929683169}
   - component: {fileID: 929683168}
-  - component: {fileID: 929683171}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -409,23 +407,6 @@ Transform:
   m_Father: {fileID: 423242697}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1818360609 &929683171
-RotationConstraint:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 929683167}
-  m_Enabled: 1
-  m_Weight: 1
-  m_RotationAtRest: {x: 0, y: 0, z: 0}
-  m_RotationOffset: {x: 90, y: 0, z: 0}
-  m_AffectRotationX: 1
-  m_AffectRotationY: 1
-  m_AffectRotationZ: 1
-  m_IsContraintActive: 1
-  m_IsLocked: 1
-  m_Sources: []
 --- !u!1001 &1125701463
 PrefabInstance:
   m_ObjectHideFlags: 0
