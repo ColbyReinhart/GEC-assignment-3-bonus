@@ -20,12 +20,12 @@ public class GunShooting : MonoBehaviour
     public float blastCooldown = 1f;
     public float blastConeDistance = 10f;
     public float blastConeAngle = 30f;
+    public LayerMask pushableLayerMask;
 
     private AudioSource gunAudio;
     private Collider playerCollider;
     private float timeToNextBullet = 0f;
     private float timeToNextBlast = 0f;
-    private int pushableLayerMask = 3;
 
     private void Awake()
     {
@@ -95,6 +95,8 @@ public class GunShooting : MonoBehaviour
             }
 
             // Then check if each collider is inside the cone
+            Debug.Log(collider.gameObject.name);
+            Debug.Log(collider.transform.position - transform.position);
             Vector3 direction = (collider.transform.position - transform.position).normalized;
             float dotProduct = Vector3.Dot(transform.forward, direction);
             if (dotProduct <= blastConeAngle)

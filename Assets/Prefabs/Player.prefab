@@ -10334,3 +10334,6 @@ MonoBehaviour:
   blastCooldown: 1
   blastConeDistance: 10
   blastConeAngle: 30
+  pushableLayerMask:
+    serializedVersion: 2
+    m_Bits: 8
