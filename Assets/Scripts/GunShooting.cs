@@ -63,6 +63,7 @@ public class GunShooting : MonoBehaviour
         if (Input.GetButtonDown("Fire2") && timeToNextBlast <= 0f)
         {
             FireBlast();
+            blastParticles.Play();
         }
     }
 
