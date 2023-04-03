@@ -13,6 +13,7 @@ public class PlayerMovement : MonoBehaviour
     private float playerYVelocity = 0;
     private float mouseX = 0;
     private float mouseY = 0;
+    private Vector3 externalForce = Vector3.zero;
 
     private CharacterController controller;
 
@@ -52,6 +53,10 @@ public class PlayerMovement : MonoBehaviour
         Vector3 vertMovement = Vector3.up * playerYVelocity * Time.deltaTime;
 
         // Apply all movement
-        controller.Move(forwardMovement + sideMovement + vertMovement);
+        controller.Move(forwardMovement + sideMovement + vertMovement + externalForce);
+        if (externalForce != Vector3.zero)
+        {
+            externalForce = Vector3.zero;
+        }
     }
 }

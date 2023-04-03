@@ -5,6 +5,7 @@ using UnityEngine;
 // Handle shooting with the gun
 public class GunShooting : MonoBehaviour
 {
+    public CharacterController character;
     public GameObject bulletPrefab;
     public Transform fireTransform;
     public AudioClip bulletShoot;
@@ -13,6 +14,7 @@ public class GunShooting : MonoBehaviour
     public float bulletVelocity = 10f;
     public float bulletCooldown = 0.25f;
     public float blastForce = 10f;
+    public float blastKnockback = 100000f;
     public float blastCooldown = 1f;
     public float blastConeDistance = 10f;
     public float blastConeAngle = 30f;
@@ -85,6 +87,10 @@ public class GunShooting : MonoBehaviour
                 }
             }
         }
+
+        // Give the player some knockback
+        Debug.Assert(character.attachedRigidbody != null);
+        character.attachedRigidbody.AddForce(transform.forward * -1 * blastKnockback);
 
         // Set cooldown
         timeToNextBlast = blastCooldown;
