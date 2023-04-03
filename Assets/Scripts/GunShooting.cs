@@ -10,6 +10,8 @@ public class GunShooting : MonoBehaviour
     public Transform fireTransform;
     public AudioClip bulletShoot;
     public AudioClip blastShoot;
+    public ParticleSystem bulletParticles;
+    public ParticleSystem blastParticles;
 
     public float bulletVelocity = 10f;
     public float bulletCooldown = 0.25f;
@@ -45,9 +47,17 @@ public class GunShooting : MonoBehaviour
         }
 
         // Check for user input
-        if (Input.GetButton("Fire1") && timeToNextBullet <= 0f)
+        if (Input.GetButtonDown("Fire1"))
+        {
+            bulletParticles.Play();
+        }
+        else if (Input.GetButton("Fire1") && timeToNextBullet <= 0f)
         {
             FireBullet();
+        }
+        else if (Input.GetButtonUp("Fire1"))
+        {
+            bulletParticles.Stop();
         }
         
         if (Input.GetButtonDown("Fire2") && timeToNextBlast <= 0f)
