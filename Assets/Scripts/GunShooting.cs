@@ -24,6 +24,7 @@ public class GunShooting : MonoBehaviour
 
     private AudioSource gunAudio;
     private Collider playerCollider;
+    private Animator animator;
     private float timeToNextBullet = 0f;
     private float timeToNextBlast = 0f;
 
@@ -31,6 +32,13 @@ public class GunShooting : MonoBehaviour
     {
         gunAudio = GetComponent<AudioSource>();
         playerCollider = player.GetComponent<Collider>();
+        animator = GetComponent<Animator>();
+    }
+
+    private void Start()
+    {
+        // Make sure we start off not aiming
+        animator.SetBool("isAiming", false);
     }
 
     // Update is called once per frame
@@ -46,7 +54,17 @@ public class GunShooting : MonoBehaviour
             timeToNextBlast -= Time.deltaTime;
         }
 
-        // Check for user input
+        // Check if the user is aiming
+        if (Input.GetButtonDown("Aim"))
+        {
+            animator.SetBool("isAiming", true);
+        }
+        else if (Input.GetButtonUp("Aim"))
+        {
+            animator.SetBool("isAiming", false);
+        }
+
+        // Check if the user is firing normal bullets
         if (Input.GetButtonDown("Fire1"))
         {
             bulletParticles.Play();
@@ -60,6 +78,7 @@ public class GunShooting : MonoBehaviour
             bulletParticles.Stop();
         }
         
+        // Check if the user is firing blasts
         if (Input.GetButtonDown("Fire2") && timeToNextBlast <= 0f)
         {
             FireBlast();
