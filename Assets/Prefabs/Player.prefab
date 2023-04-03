@@ -6042,7 +6042,7 @@ ParticleSystem:
           m_PostInfinity: 2
           m_RotationOrder: 4
       cycleCount: 0
-      repeatInterval: 0.25
+      repeatInterval: 0.1
       probability: 1
   SizeModule:
     enabled: 0
@@ -10329,7 +10329,7 @@ MonoBehaviour:
   blastParticles: {fileID: 383326396233501107}
   bulletVelocity: 50
   bulletCooldown: 0.1
-  blastForce: 1000
+  blastForce: 5000
   blastKnockback: 300
   blastCooldown: 1
   blastConeDistance: 10
