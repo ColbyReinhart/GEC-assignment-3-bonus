@@ -9,6 +9,8 @@ public class LevelManager : MonoBehaviour
 
     public float timeToComplete = 150;
 
+    private int points = 0;
+
     private void Awake()
     {
         // Setup singleton instance
@@ -20,5 +22,11 @@ public class LevelManager : MonoBehaviour
         {
             instance = this;
         }
+    }
+
+    public void AddPoints(int value)
+    {
+        points += value;
+        UIManager.instance.UpdateScore(points);
     }
 }

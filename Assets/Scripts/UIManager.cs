@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
-// This script manages all UI elements
+// This script manages all UI elements. This class should only be used by
+// the level manager script.
 public class UIManager : MonoBehaviour
 {
     // Singleton reference
@@ -24,6 +25,11 @@ public class UIManager : MonoBehaviour
         {
             instance = this;
         }
+    }
+
+    public void UpdateScore(int value)
+    {
+        score.text = "Score: " + value;
     }
 
     private void Start()
