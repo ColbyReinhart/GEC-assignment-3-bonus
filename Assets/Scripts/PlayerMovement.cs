@@ -5,21 +5,20 @@ using UnityEngine;
 // Scripting for player movement and camera control
 public class PlayerMovement : MonoBehaviour
 {
+    public GroundedTrigger groundedTrigger;
+
     public float moveSpeed = 3;
-    public float jumpSpeed = 7;
+    public float jumpForce = 250;
     public float lookSensitivity = 1;
 
-    private const float gravityValue = -9.81f;
-    private float playerYVelocity = 0;
     private float mouseX = 0;
     private float mouseY = 0;
-    private Vector3 externalForce = Vector3.zero;
 
-    private CharacterController controller;
+    private Rigidbody rb;
 
     private void Start()
     {
-        controller = GetComponent<CharacterController>();
+        rb = GetComponent<Rigidbody>();
         Cursor.lockState = CursorLockMode.Locked;
     }
 
@@ -37,26 +36,15 @@ public class PlayerMovement : MonoBehaviour
         Camera.main.transform.rotation = Quaternion.Euler(-mouseY, mouseX, 0);
         transform.rotation = Quaternion.Euler(0, mouseX, 0);
 
-        // Calculate movement
+        // Calculate and apply movement
         Vector3 forwardMovement = transform.forward * Input.GetAxis("Vertical") * moveSpeed * Time.deltaTime;
         Vector3 sideMovement = transform.right * Input.GetAxis("Horizontal") * moveSpeed * Time.deltaTime;
+        rb.MovePosition(rb.position + forwardMovement + sideMovement);
 
         // Handle jumping and gravity
-        if (Input.GetButtonDown("Jump") && controller.isGrounded)
+        if (Input.GetButtonDown("Jump") && groundedTrigger.grounded)
         {
-            playerYVelocity = jumpSpeed;
-        }
-        else if (!controller.isGrounded)
-        {
-            playerYVelocity += gravityValue * Time.deltaTime;
-        }
-        Vector3 vertMovement = Vector3.up * playerYVelocity * Time.deltaTime;
-
-        // Apply all movement
-        controller.Move(forwardMovement + sideMovement + vertMovement + externalForce);
-        if (externalForce != Vector3.zero)
-        {
-            externalForce = Vector3.zero;
+            rb.AddForce(transform.up * jumpForce);
         }
     }
 }

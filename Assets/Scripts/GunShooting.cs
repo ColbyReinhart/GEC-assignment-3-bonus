@@ -5,7 +5,7 @@ using UnityEngine;
 // Handle shooting with the gun
 public class GunShooting : MonoBehaviour
 {
-    public CharacterController character;
+    public Rigidbody player;
     public GameObject bulletPrefab;
     public Transform fireTransform;
     public AudioClip bulletShoot;
@@ -13,13 +13,14 @@ public class GunShooting : MonoBehaviour
 
     public float bulletVelocity = 10f;
     public float bulletCooldown = 0.25f;
-    public float blastForce = 10f;
-    public float blastKnockback = 100000f;
+    public float blastForce = 250f;
+    public float blastKnockback = 250f;
     public float blastCooldown = 1f;
     public float blastConeDistance = 10f;
     public float blastConeAngle = 30f;
 
     private AudioSource gunAudio;
+    private Collider playerCollider;
     private float timeToNextBullet = 0f;
     private float timeToNextBlast = 0f;
     private int pushableLayerMask = 3;
@@ -27,6 +28,7 @@ public class GunShooting : MonoBehaviour
     private void Awake()
     {
         gunAudio = GetComponent<AudioSource>();
+        playerCollider = player.GetComponent<Collider>();
     }
 
     // Update is called once per frame
@@ -60,6 +62,7 @@ public class GunShooting : MonoBehaviour
         // Shoot the bullet
         GameObject bullet = Instantiate(bulletPrefab, fireTransform);
         bullet.GetComponent<Rigidbody>().velocity = bullet.transform.forward * bulletVelocity;
+        Physics.IgnoreCollision(playerCollider, bullet.GetComponent<Collider>());
 
         // Set cooldown
         timeToNextBullet = bulletCooldown;
@@ -74,6 +77,12 @@ public class GunShooting : MonoBehaviour
         // Get all pushable colliders in range
         foreach (Collider collider in Physics.OverlapSphere(transform.position, blastConeDistance, pushableLayerMask))
         {
+            // Don't apply force to the player
+            if (collider.gameObject.tag == "Player")
+            {
+                continue;
+            }
+
             // Then check if each collider is inside the cone
             Vector3 direction = (collider.transform.position - transform.position).normalized;
             float dotProduct = Vector3.Dot(transform.forward, direction);
@@ -83,14 +92,13 @@ public class GunShooting : MonoBehaviour
                 Rigidbody rb = collider.GetComponent<Rigidbody>();
                 if (rb != null)
                 {
-                    rb.AddForce(transform.forward * blastForce);
+                    rb.AddForce(direction * blastForce);
                 }
             }
         }
 
         // Give the player some knockback
-        Debug.Assert(character.attachedRigidbody != null);
-        character.attachedRigidbody.AddForce(transform.forward * -1 * blastKnockback);
+        player.AddForce(Camera.main.transform.forward * -1 * blastKnockback);
 
         // Set cooldown
         timeToNextBlast = blastCooldown;
