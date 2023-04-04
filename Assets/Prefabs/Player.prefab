@@ -10329,7 +10329,7 @@ MonoBehaviour:
   blastParticles: {fileID: 383326396233501107}
   bulletVelocity: 50
   bulletCooldown: 0.1
-  blastForce: 5000
+  blastForce: 2500
   blastKnockback: 300
   blastCooldown: 1
   blastConeDistance: 10

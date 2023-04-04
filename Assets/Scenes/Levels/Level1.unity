@@ -265,10 +265,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1587247144, guid: 47ca1c0c78cd28a45b4098c62cc714be, type: 3}
-      propertyPath: m_Mass
-      value: 2
-      objectReference: {fileID: 0}
     - target: {fileID: 123639180209718512, guid: 47ca1c0c78cd28a45b4098c62cc714be, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -279,7 +275,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 123639180209718512, guid: 47ca1c0c78cd28a45b4098c62cc714be, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 123639180209718512, guid: 47ca1c0c78cd28a45b4098c62cc714be, type: 3}
       propertyPath: m_LocalPosition.z
@@ -320,6 +316,10 @@ PrefabInstance:
     - target: {fileID: 123639180210149584, guid: 47ca1c0c78cd28a45b4098c62cc714be, type: 3}
       propertyPath: m_Layer
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8635586676122797083, guid: 47ca1c0c78cd28a45b4098c62cc714be, type: 3}
+      propertyPath: m_Center.y
+      value: 0.04
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 47ca1c0c78cd28a45b4098c62cc714be, type: 3}
@@ -1432,14 +1432,6 @@ PrefabInstance:
     - target: {fileID: 383326397026826659, guid: 9754dbec8cc8bfb4cbc5edb777797dc9, type: 3}
       propertyPath: m_Name
       value: Player
-      objectReference: {fileID: 0}
-    - target: {fileID: 383326397508664414, guid: 9754dbec8cc8bfb4cbc5edb777797dc9, type: 3}
-      propertyPath: blastForce
-      value: 5000
-      objectReference: {fileID: 0}
-    - target: {fileID: 383326397508664414, guid: 9754dbec8cc8bfb4cbc5edb777797dc9, type: 3}
-      propertyPath: blastKnockback
-      value: 300
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9754dbec8cc8bfb4cbc5edb777797dc9, type: 3}

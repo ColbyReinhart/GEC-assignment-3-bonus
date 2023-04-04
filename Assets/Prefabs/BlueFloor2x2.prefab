@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 8840986622564950554}
   m_Layer: 0
   m_Name: BlueFloor2x2
-  m_TagString: Untagged
+  m_TagString: Terrain
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
