@@ -10,6 +10,7 @@ public class PlayerMovement : MonoBehaviour
     public float moveSpeed = 3;
     public float jumpForce = 250;
     public float lookSensitivity = 1;
+    public bool canMove = true;
 
     private float mouseX = 0;
     private float mouseY = 0;

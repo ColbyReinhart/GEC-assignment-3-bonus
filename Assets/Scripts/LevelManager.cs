@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -10,6 +11,7 @@ public class LevelManager : MonoBehaviour
 
     public float timeToComplete = 150;
 
+    private PlayerMovement player;
     private int points = 0;
 
     private void Awake()
@@ -22,10 +24,22 @@ public class LevelManager : MonoBehaviour
         instance = this;
     }
 
+    private void Start()
+    {
+        // Get components
+        player = GameObject.FindWithTag("Player").GetComponent<PlayerMovement>();
+    }
+
     public void AddPoints(int value)
     {
         points += value;
         UIManager.instance.UpdateScore(points);
+    }
+
+    public void LevelComplete()
+    {
+        player.canMove = false;
+        StartCoroutine(UIManager.instance.DoLevelClearUI());
     }
 
     public void GameOver()
@@ -39,5 +53,14 @@ public class LevelManager : MonoBehaviour
     public void Restart()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
+
+    public void NextLevel()
+    {
+        // Get the current scene
+        string sceneName = SceneManager.GetActiveScene().name;
+
+        // Get the level number
+        int levelNumber = sceneName[sceneName.Length() - 1];
     }
 }

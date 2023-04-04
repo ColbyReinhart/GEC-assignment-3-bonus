@@ -41,6 +41,11 @@ public class UIManager : MonoBehaviour
         LevelManager.instance.Restart();
     }
 
+    public IEnumerator DoLevelClearUI()
+    {
+        yield return new WaitForSeconds(1f);
+    }
+
     private void Start()
     {
         // Initialize timer
