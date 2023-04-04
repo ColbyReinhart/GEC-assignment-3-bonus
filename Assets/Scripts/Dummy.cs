@@ -11,18 +11,11 @@ public class Dummy : MonoBehaviour
     private int worth; // How many points for knocking them over?
     private bool isDead = false;
 
-    private void OnCollisionEnter(Collision collision)
+    private void OnTriggerEnter(Collider other)
     {
         // If we hit terrain and we're still alive
-        if (collision.gameObject.tag == "Terrain" && !isDead)
+        if (other.CompareTag("Terrain") && !isDead)
         {
-            // See which collider touched the ground
-            ContactPoint[] contacts = new ContactPoint[10];
-            collision.GetContacts(contacts);
-            foreach (ContactPoint contact in contacts)
-            {
-                
-            }
             isDead = true;
             Destroy(gameObject);
             GameObject spawnedExplosion =
