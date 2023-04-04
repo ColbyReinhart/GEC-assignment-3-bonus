@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.UI;
 
 // This script manages all UI elements. This class should only be used by
 // the level manager script.
@@ -13,6 +14,8 @@ public class UIManager : MonoBehaviour
     // UI elements
     public TMP_Text timer;
     public TMP_Text score;
+    public TMP_Text gameOverText;
+    public Animator fadeScreenAnim;
 
     private void Awake()
     {
@@ -30,6 +33,13 @@ public class UIManager : MonoBehaviour
     public void UpdateScore(int value)
     {
         score.text = "Score: " + value;
+    }
+
+    public IEnumerator DoGameOverUI()
+    {
+        gameOverText.gameObject.SetActive(true);
+        yield return new WaitForSeconds(1f);
+        fadeScreenAnim.SetBool("FadeOut", true);
     }
 
     private void Start()
