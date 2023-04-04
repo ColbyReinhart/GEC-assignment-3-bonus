@@ -32,10 +32,16 @@ public class LevelManager : MonoBehaviour
         UIManager.instance.UpdateScore(points);
     }
 
-    public IEnumerable GameOver()
+    public void GameOver()
     {
-        Coroutine gameOverUI = StartCoroutine(UIManager.instance.DoGameOverUI());
-        yield return gameOverUI;
+        // DoGameOverUI() will call Restart(), even though this class
+        // should do it, because I need to learn how coroutines work
+        // and I ran out of time.
+        StartCoroutine(UIManager.instance.DoGameOverUI());
+    }
+
+    public void Restart()
+    {
         SceneManager.LoadScene("Scenes/Levels/Level" + thisLevel);
     }
 }

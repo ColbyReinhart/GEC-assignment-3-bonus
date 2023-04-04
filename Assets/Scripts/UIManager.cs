@@ -40,6 +40,8 @@ public class UIManager : MonoBehaviour
         gameOverText.gameObject.SetActive(true);
         yield return new WaitForSeconds(1f);
         fadeScreenAnim.SetBool("FadeOut", true);
+        yield return new WaitForSeconds(2.5f);
+        LevelManager.instance.Restart();
     }
 
     private void Start()

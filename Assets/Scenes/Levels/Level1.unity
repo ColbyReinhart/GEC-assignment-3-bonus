@@ -188,6 +188,31 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 47ca1c0c78cd28a45b4098c62cc714be, type: 3}
+--- !u!1 &368719399 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7586162705889100939, guid: 7e083a4503e320f459f9214d5c6e4675, type: 3}
+  m_PrefabInstance: {fileID: 782218852770825744}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &368719403
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 368719399}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 419fe3a52f01a124faa7f4c902bf0b7d, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
 --- !u!1 &469338362 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 689244816328196363, guid: 9754dbec8cc8bfb4cbc5edb777797dc9, type: 3}
@@ -1079,9 +1104,21 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 60857904122677159, guid: 7e083a4503e320f459f9214d5c6e4675, type: 3}
+      propertyPath: m_fontColor.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 60857904122677159, guid: 7e083a4503e320f459f9214d5c6e4675, type: 3}
+      propertyPath: m_fontColor32.rgba
+      value: 4278585022
+      objectReference: {fileID: 0}
     - target: {fileID: 782218851302835029, guid: 7e083a4503e320f459f9214d5c6e4675, type: 3}
       propertyPath: m_Name
       value: GameManager
+      objectReference: {fileID: 0}
+    - target: {fileID: 782218851302835031, guid: 7e083a4503e320f459f9214d5c6e4675, type: 3}
+      propertyPath: thisLevel
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 782218851302835035, guid: 7e083a4503e320f459f9214d5c6e4675, type: 3}
       propertyPath: m_Pivot.x
@@ -1167,9 +1204,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2572119013590042266, guid: 7e083a4503e320f459f9214d5c6e4675, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -1
+      objectReference: {fileID: 0}
     - target: {fileID: 6962900125147849512, guid: 7e083a4503e320f459f9214d5c6e4675, type: 3}
       propertyPath: m_audioClip
       value: 
       objectReference: {fileID: 8300000, guid: 333f1335362b1a6439390f911a8d1a97, type: 3}
+    - target: {fileID: 7586162705889100939, guid: 7e083a4503e320f459f9214d5c6e4675, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7e083a4503e320f459f9214d5c6e4675, type: 3}
