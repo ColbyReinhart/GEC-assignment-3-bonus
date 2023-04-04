@@ -8,22 +8,18 @@ public class LevelManager : MonoBehaviour
 {
     public static LevelManager instance;
 
-    public int thisLevel;
     public float timeToComplete = 150;
 
     private int points = 0;
 
     private void Awake()
     {
-        // Setup singleton instance
-        if (instance != null && instance != this)
+        // Setup singleton instance, but let it reset itself on scene reloads
+        if (instance != null)
         {
-            Destroy(this);
+            Destroy(instance);
         }
-        else
-        {
-            instance = this;
-        }
+        instance = this;
     }
 
     public void AddPoints(int value)
@@ -42,6 +38,6 @@ public class LevelManager : MonoBehaviour
 
     public void Restart()
     {
-        SceneManager.LoadScene("Scenes/Levels/Level" + thisLevel);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 }

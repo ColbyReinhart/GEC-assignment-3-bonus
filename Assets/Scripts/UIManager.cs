@@ -19,15 +19,12 @@ public class UIManager : MonoBehaviour
 
     private void Awake()
     {
-        // Setup singleton instance
-        if (instance != null && instance != this)
+        // Setup singleton instance, but let it reset itself on scene reloads
+        if (instance != null)
         {
-            Destroy(this);
+            Destroy(instance);
         }
-        else
-        {
-            instance = this;
-        }
+        instance = this;
     }
 
     public void UpdateScore(int value)
@@ -53,7 +50,7 @@ public class UIManager : MonoBehaviour
     private void Update()
     {
         // Tick down timer
-        int timeLeft = (int)(LevelManager.instance.timeToComplete - Time.time);
+        int timeLeft = (int)(LevelManager.instance.timeToComplete - Time.timeSinceLevelLoad);
         timer.text = timeLeft.ToString();
     }
 }
