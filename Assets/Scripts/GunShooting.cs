@@ -114,10 +114,8 @@ public class GunShooting : MonoBehaviour
             }
 
             // Then check if each collider is inside the cone
-            Debug.Log(collider.transform.position - transform.position);
             Vector3 direction = (collider.transform.position - transform.position).normalized;
             float dotProduct = Vector3.Dot(transform.forward, direction) * Mathf.Rad2Deg;
-            Debug.Log(dotProduct);
             if (Mathf.Abs(dotProduct) <= blastConeAngle)
             {
                 // Apply force to all colliders in the blast cone
