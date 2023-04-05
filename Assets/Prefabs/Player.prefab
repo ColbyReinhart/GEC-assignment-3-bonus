@@ -9936,6 +9936,7 @@ MonoBehaviour:
   moveSpeed: 5
   jumpForce: 300
   lookSensitivity: 3
+  canMove: 1
 --- !u!54 &383326397026826661
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -9983,7 +9984,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 2e363af4ad752374c82920d582ca74d0, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.39999998
+      value: -0.4
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 2e363af4ad752374c82920d582ca74d0, type: 3}
       propertyPath: m_LocalPosition.z
@@ -10133,6 +10134,26 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!95 &1043431937412177452
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 689244816328196363}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: b5884a65e11384e4596eff5722b8dd21, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
 --- !u!114 &383326397508664414
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10152,9 +10173,10 @@ MonoBehaviour:
   blastShoot: {fileID: 8300000, guid: ad36facc6ff736540b4b4712cd4ae656, type: 3}
   bulletParticles: {fileID: 383326396585986783}
   blastParticles: {fileID: 383326396233501107}
+  canFire: 1
   bulletVelocity: 50
   bulletCooldown: 0.1
-  blastForce: 2500
+  blastForce: 300
   blastKnockback: 300
   blastCooldown: 1
   blastConeDistance: 10
