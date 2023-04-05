@@ -7,11 +7,18 @@ public class FinishTrigger : MonoBehaviour
 {
     private void OnCollisionEnter(Collision collision)
     {
-        LevelManager.instance.LevelComplete();
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            LevelManager.instance.LevelComplete();
+
+        }
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        LevelManager.instance.LevelComplete();
+        if (other.gameObject.CompareTag("Player"))
+        {
+            LevelManager.instance.LevelComplete();
+        }
     }
 }
