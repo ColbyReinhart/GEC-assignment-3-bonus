@@ -11,5 +11,9 @@ public class DeathPlane : MonoBehaviour
         {
             LevelManager.instance.GameOver();
         }
+        else if (other.CompareTag("BossProjectile"))
+        {
+            Destroy(other.gameObject);
+        }
     }
 }

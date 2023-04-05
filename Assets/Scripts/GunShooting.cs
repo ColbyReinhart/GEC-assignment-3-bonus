@@ -22,6 +22,7 @@ public class GunShooting : MonoBehaviour
     public float blastConeDistance = 10f;
     public float blastConeAngle = 30f;
     public LayerMask pushableLayerMask;
+    public LayerMask bossProjectileLayerMask;
 
     private AudioSource gunAudio;
     private Collider playerCollider;
@@ -111,7 +112,7 @@ public class GunShooting : MonoBehaviour
     private void FireBlast()
     {
         // Get all pushable colliders in range
-        foreach (Collider collider in Physics.OverlapSphere(transform.position, blastConeDistance, pushableLayerMask))
+        foreach (Collider collider in Physics.OverlapSphere(transform.position, blastConeDistance, pushableLayerMask | bossProjectileLayerMask))
         {
             // Don't apply force to the player
             if (collider.gameObject.tag == "Player")

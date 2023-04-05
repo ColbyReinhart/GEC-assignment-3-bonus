@@ -10184,3 +10184,6 @@ MonoBehaviour:
   pushableLayerMask:
     serializedVersion: 2
     m_Bits: 8
+  bossProjectileLayerMask:
+    serializedVersion: 2
+    m_Bits: 64

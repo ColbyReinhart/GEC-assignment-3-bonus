@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Bullet
   - Terrain
+  - BossProjectile
   layers:
   - Default
   - TransparentFX
@@ -13,7 +14,7 @@ TagManager:
   - Pushable
   - Water
   - UI
-  - 
+  - BossProjectile
   - 
   - 
   - 
