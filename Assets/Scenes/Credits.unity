@@ -519,8 +519,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 200, y: -375}
-  m_SizeDelta: {x: 400, y: 650}
+  m_AnchoredPosition: {x: 200, y: -425}
+  m_SizeDelta: {x: 400, y: 750}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &681640114
 MonoBehaviour:
@@ -559,6 +559,9 @@ MonoBehaviour:
 
 
     Jimmy Vegas
+
+
+    JT Raber
 
 
     Meldin Bektic
@@ -676,8 +679,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -200, y: -375}
-  m_SizeDelta: {x: 400, y: 650}
+  m_AnchoredPosition: {x: -200, y: -425}
+  m_SizeDelta: {x: 400, y: 750}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &684588136
 MonoBehaviour:
@@ -717,11 +720,14 @@ MonoBehaviour:
     Inspiration
 
 
+    Fart
+    Specialist
+
+
     Professor
 
 
-    Professor''s
-    Cat'
+    Professor''s Cat'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
