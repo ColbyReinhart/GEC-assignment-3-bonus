@@ -23,7 +23,7 @@ public class Platform : MonoBehaviour
         transform.position = startPos.position;
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
         transform.position += movementPerSec * Time.deltaTime;
         secondsTraveled += Time.deltaTime;
@@ -35,13 +35,8 @@ public class Platform : MonoBehaviour
         }
     }
 
-    private void OnCollisionEnter(Collision collision)
+    private void OnCollisionStay(Collision collision)
     {
-        collision.transform.parent = transform;
-    }
-
-    private void OnCollisionExit(Collision collision)
-    {
-        collision.transform.parent = null;
+        collision.transform.position += movementPerSec * Time.deltaTime;
     }
 }
