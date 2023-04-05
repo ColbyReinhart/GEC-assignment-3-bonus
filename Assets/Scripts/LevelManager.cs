@@ -12,6 +12,7 @@ public class LevelManager : MonoBehaviour
     public float timeToComplete = 150;
 
     private PlayerMovement player;
+    private AudioSource levelMusic;
     private int points = 0;
 
     private void Awake()
@@ -22,6 +23,9 @@ public class LevelManager : MonoBehaviour
             Destroy(instance);
         }
         instance = this;
+
+        // Get components
+        levelMusic = GetComponent<AudioSource>();
     }
 
     private void Start()
@@ -36,17 +40,21 @@ public class LevelManager : MonoBehaviour
         UIManager.instance.UpdateScore(points);
     }
 
+    public int GetPoints()
+    {
+        return points;
+    }
+
     public void LevelComplete()
     {
         player.canMove = false;
+        Cursor.lockState = CursorLockMode.None;
+        levelMusic.Stop();
         StartCoroutine(UIManager.instance.DoLevelClearUI());
     }
 
     public void GameOver()
     {
-        // DoGameOverUI() will call Restart(), even though this class
-        // should do it, because I need to learn how coroutines work
-        // and I ran out of time.
         StartCoroutine(UIManager.instance.DoGameOverUI());
     }
 
@@ -60,7 +68,10 @@ public class LevelManager : MonoBehaviour
         // Get the current scene
         string sceneName = SceneManager.GetActiveScene().name;
 
-        // Get the level number
-        int levelNumber = sceneName[sceneName.Length() - 1];
+        // Get the level number and increment by 1
+        int levelNumber = sceneName[sceneName.Length - 1] + 1;
+
+        // Load the next level
+        SceneManager.LoadScene("Scenes/Levels/Level" + levelNumber);
     }
 }

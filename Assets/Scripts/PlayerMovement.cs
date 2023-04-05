@@ -25,6 +25,11 @@ public class PlayerMovement : MonoBehaviour
 
     private void Update()
     {
+        if (!canMove)
+        {
+            return;
+        }
+
         // Let the player look around when they move the mouse
         mouseX += Input.GetAxis("Mouse X") * lookSensitivity;
         mouseY += Input.GetAxis("Mouse Y") * lookSensitivity;

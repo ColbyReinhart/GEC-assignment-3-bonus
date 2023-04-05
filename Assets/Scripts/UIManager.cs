@@ -17,6 +17,15 @@ public class UIManager : MonoBehaviour
     public TMP_Text gameOverText;
     public Animator fadeScreenAnim;
 
+    // Level clear panel
+    public GameObject levelClearPanel;
+    public TMP_Text endingTimeLeft;
+    public TMP_Text endingScore;
+    public TMP_Text endingTotal;
+    public Button nextLevelButton;
+
+    private bool timerTicking = true;
+
     private void Awake()
     {
         // Setup singleton instance, but let it reset itself on scene reloads
@@ -43,7 +52,33 @@ public class UIManager : MonoBehaviour
 
     public IEnumerator DoLevelClearUI()
     {
+        // Prelim
+        timerTicking = false;
+        int timeLeft = (int)(LevelManager.instance.timeToComplete - Time.timeSinceLevelLoad);
+
+        // Activate the level clear panel
+        levelClearPanel.SetActive(true);
         yield return new WaitForSeconds(1f);
+
+        // Do ending time left
+        endingTimeLeft.text = "Time left: " + timeLeft + " x 100";
+        endingTimeLeft.gameObject.SetActive(true);
+        yield return new WaitForSeconds(1f);
+
+        // Do ending score
+        int points = LevelManager.instance.GetPoints();
+        endingScore.text = "Score: " + points;
+        endingScore.gameObject.SetActive(true);
+        yield return new WaitForSeconds(1f);
+
+        // Do ending total
+        int totalScore = (timeLeft * 100) + points;
+        endingTotal.text = "Total: " + totalScore;
+        endingTotal.gameObject.SetActive(true);
+        yield return new WaitForSeconds(1f);
+
+        // Do next level button
+        nextLevelButton.gameObject.SetActive(true);
     }
 
     private void Start()
@@ -55,7 +90,10 @@ public class UIManager : MonoBehaviour
     private void Update()
     {
         // Tick down timer
-        int timeLeft = (int)(LevelManager.instance.timeToComplete - Time.timeSinceLevelLoad);
-        timer.text = timeLeft.ToString();
+        if (timerTicking)
+        {
+            int timeLeft = (int)(LevelManager.instance.timeToComplete - Time.timeSinceLevelLoad);
+            timer.text = timeLeft.ToString();
+        }
     }
 }
