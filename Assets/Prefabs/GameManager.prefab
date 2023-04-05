@@ -121,6 +121,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timeToComplete: 150
+  levelCompleteSound: {fileID: 8300000, guid: 3d15bcb67a158d84399413934d65c593, type: 3}
 --- !u!114 &782218851302835030
 MonoBehaviour:
   m_ObjectHideFlags: 0

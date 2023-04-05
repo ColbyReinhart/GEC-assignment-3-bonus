@@ -10,8 +10,10 @@ public class LevelManager : MonoBehaviour
     public static LevelManager instance;
 
     public float timeToComplete = 150;
+    public AudioClip levelCompleteSound;
 
     private PlayerMovement player;
+    private GunShooting gun;
     private AudioSource levelMusic;
     private int points = 0;
 
@@ -32,6 +34,7 @@ public class LevelManager : MonoBehaviour
     {
         // Get components
         player = GameObject.FindWithTag("Player").GetComponent<PlayerMovement>();
+        gun = player.gameObject.GetComponentInChildren<GunShooting>();
     }
 
     public void AddPoints(int value)
@@ -47,9 +50,11 @@ public class LevelManager : MonoBehaviour
 
     public void LevelComplete()
     {
-        player.canMove = false;
-        Cursor.lockState = CursorLockMode.None;
         levelMusic.Stop();
+        levelMusic.PlayOneShot(levelCompleteSound);
+        player.canMove = false;
+        gun.canFire = false;
+        Cursor.lockState = CursorLockMode.None;
         StartCoroutine(UIManager.instance.DoLevelClearUI());
     }
 

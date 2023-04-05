@@ -13,6 +13,7 @@ public class GunShooting : MonoBehaviour
     public ParticleSystem bulletParticles;
     public ParticleSystem blastParticles;
 
+    public bool canFire = true;
     public float bulletVelocity = 10f;
     public float bulletCooldown = 0.25f;
     public float blastForce = 250f;
@@ -52,6 +53,11 @@ public class GunShooting : MonoBehaviour
         if (timeToNextBlast > 0)
         {
             timeToNextBlast -= Time.deltaTime;
+        }
+
+        if (!canFire)
+        {
+            return;
         }
 
         // Check if the user is aiming

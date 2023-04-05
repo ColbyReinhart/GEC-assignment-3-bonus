@@ -61,7 +61,7 @@ public class UIManager : MonoBehaviour
         yield return new WaitForSeconds(1f);
 
         // Do ending time left
-        endingTimeLeft.text = "Time left: " + timeLeft + " x 100";
+        endingTimeLeft.text = "Time left:\n" + timeLeft + " x 100";
         endingTimeLeft.gameObject.SetActive(true);
         yield return new WaitForSeconds(1f);
 
