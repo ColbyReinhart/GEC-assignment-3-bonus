@@ -74,7 +74,7 @@ public class LevelManager : MonoBehaviour
         string sceneName = SceneManager.GetActiveScene().name;
 
         // Get the level number and increment by 1
-        int levelNumber = sceneName[sceneName.Length - 1] + 1;
+        int levelNumber = (sceneName[sceneName.Length - 1] - '0') + 1;
 
         // Load the next level
         SceneManager.LoadScene("Scenes/Levels/Level" + levelNumber);
