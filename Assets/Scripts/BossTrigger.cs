@@ -6,10 +6,13 @@ public class BossTrigger : MonoBehaviour
 {
     public Boss boss;
 
+    private bool isTriggered;
+
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.CompareTag("Player"))
+        if (other.gameObject.CompareTag("Player") && !isTriggered)
         {
+            isTriggered = true;
             boss.StartFight(other.gameObject);
         }
     }

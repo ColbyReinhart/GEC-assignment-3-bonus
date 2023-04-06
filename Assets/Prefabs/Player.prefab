@@ -10176,7 +10176,7 @@ MonoBehaviour:
   canFire: 1
   bulletVelocity: 50
   bulletCooldown: 0.1
-  blastForce: 300
+  blastForce: 350
   blastKnockback: 300
   blastCooldown: 1
   blastConeDistance: 10

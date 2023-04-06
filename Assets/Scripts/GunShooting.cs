@@ -97,7 +97,13 @@ public class GunShooting : MonoBehaviour
     private void FireBullet()
     {
         // Shoot the bullet
-        GameObject bullet = Instantiate(bulletPrefab, fireTransform);
+        GameObject bullet = Instantiate
+        (
+            bulletPrefab,
+            fireTransform.transform.position,
+            fireTransform.transform.rotation
+            
+        );
         bullet.GetComponent<Rigidbody>().velocity = bullet.transform.forward * bulletVelocity;
         Physics.IgnoreCollision(playerCollider, bullet.GetComponent<Collider>());
 
@@ -125,9 +131,16 @@ public class GunShooting : MonoBehaviour
             float dotProduct = Vector3.Dot(transform.forward, direction) * Mathf.Rad2Deg;
             if (Mathf.Abs(dotProduct) <= blastConeAngle)
             {
-                // Apply force to all colliders in the blast cone
                 Rigidbody rb = collider.GetComponent<Rigidbody>();
-                if (rb != null)
+
+                // If it's a boss projectile, send it flying in the other direction
+                if (collider.gameObject.CompareTag("BossProjectile") && rb != null)
+                {
+                    rb.velocity *= -0.25f;
+                }
+
+                // Otherwise Apply force to all colliders in the blast cone
+                else if (rb != null)
                 {
                     rb.AddForce(direction * blastForce);
                 }
